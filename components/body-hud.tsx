@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { ArrowUpRight, Info } from "lucide-react"
+import { ArrowUpRight, CodeXml, Info } from "lucide-react"
 import { ViewerScene } from "@/components/three/ViewerScene"
 import { SpotAdDialog } from "@/components/spot-ad-dialog"
 import { SpotListSheet } from "@/components/spot-list-sheet"
@@ -128,6 +128,16 @@ export function BodyHud({
             className="text-cyan-200 underline-offset-2 hover:underline"
           >
             @yapsgg
+          </a>{" "}
+          <span className="text-slate-500">·</span>{" "}
+          <a
+            href="https://github.com/abdibrokhim/sponsor-my-athlete-fly"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-cyan-200 underline-offset-2 hover:underline"
+          >
+            <CodeXml className="h-3 w-3" />
+            GitHub
           </a>
         </div>
       </div>
