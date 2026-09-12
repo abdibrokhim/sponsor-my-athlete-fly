@@ -117,12 +117,18 @@ export function BodyHud({
         </button>
       </div>
 
-      {/* Bottom-right profile chip */}
-      <div className="pointer-events-none absolute bottom-5 right-5 hidden items-center gap-2 sm:flex">
+      {/* Bottom-right credit chip */}
+      <div className="absolute bottom-5 right-5 hidden items-center gap-2 sm:flex">
         <div className="rounded-full border border-cyan-300/30 bg-cyan-400/10 px-3 py-1.5 text-xs text-slate-200">
-          This is{" "}
-          <span className="text-cyan-200">@{avatar.twitter ?? avatar.name}</span>
-          <span className="pl-1 text-slate-500">· 100% catchy fly</span>
+          Made by{" "}
+          <a
+            href="https://x.com/yapsdotgg"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-cyan-200 underline-offset-2 hover:underline"
+          >
+            @yapsgg
+          </a>
         </div>
       </div>
 

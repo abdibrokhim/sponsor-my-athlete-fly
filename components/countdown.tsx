@@ -21,12 +21,21 @@ function diff(target: number): Blocks {
   }
 }
 
+const ZERO: Blocks = { d: 0, h: 0, m: 0, s: 0 }
+
 export function Countdown({ target }: { target: number }) {
-  const [t, setT] = useState<Blocks>(() => diff(target))
+  // Start from a deterministic value so SSR and hydration match, then fill in
+  // the real countdown on the client.
+  const [t, setT] = useState<Blocks>(ZERO)
 
   useEffect(() => {
-    const id = setInterval(() => setT(diff(target)), 1000)
-    return () => clearInterval(id)
+    const tick = () => setT(diff(target))
+    const raf = requestAnimationFrame(tick)
+    const id = setInterval(tick, 1000)
+    return () => {
+      cancelAnimationFrame(raf)
+      clearInterval(id)
+    }
   }, [target])
 
   const items: Array<{ k: keyof Blocks; v: number }> = [

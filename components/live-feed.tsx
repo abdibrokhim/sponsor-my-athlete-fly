@@ -20,13 +20,9 @@ interface Row {
 
 export function LiveFeed({ baseViews }: { baseViews: number }) {
   const [views, setViews] = useState(baseViews)
-  const [rows, setRows] = useState<Row[]>(() =>
-    Array.from({ length: 4 }, (_, i) => ({
-      id: i,
-      country: randomCountry(),
-      time: "",
-    })),
-  )
+  // Empty on the server/first render to avoid hydration mismatches, then
+  // populated on the client by the interval below.
+  const [rows, setRows] = useState<Row[]>([])
 
   useEffect(() => {
     const tock = () =>
